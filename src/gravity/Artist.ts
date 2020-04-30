@@ -4,7 +4,6 @@ import {
   String,
   Array,
   Record,
-  Dictionary,
   Static,
   Undefined,
   Null,
@@ -13,7 +12,7 @@ import {
 export const EmbeddedArtist = Record({
   _id: String,
   id: String,
-  alternate_names: Array(String).Or(Undefined),
+  alternate_names: Array(String).Or(Null).Or(Undefined),
   artworks_count: Number,
   birthday: String.Or(Null),
   blurb: String.Or(Undefined),
@@ -25,7 +24,12 @@ export const EmbeddedArtist = Record({
   forsale_artworks_count: Number,
   hometown: String.Or(Undefined),
   image_url: String.Or(Null),
-  image_urls: Dictionary(String, "string"), // TODO: Flesh out expected keys
+  image_urls: Record({
+    square: String.Or(Null).Or(Undefined),
+    four_thirds: String.Or(Null).Or(Undefined),
+    tall: String.Or(Null).Or(Undefined),
+    large: String.Or(Null).Or(Undefined),
+  }),
   image_versions: Array(String),
   location: String.Or(Undefined),
   name: String,

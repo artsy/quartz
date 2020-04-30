@@ -4,8 +4,20 @@ import chalk from "chalk";
 import { Gravity } from "../src";
 import get from "lodash.get";
 
+const STATE: {
+  client: null | AxiosInstance;
+} = {
+  client: null,
+};
+
+const random = (max: number) => Math.floor(Math.random() * Math.floor(max));
+
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
 const xapp = async () => {
   const endpoint = `${process.env.GRAVITY_API_BASE}/xapp_token?client_id=${process.env.GRAVITY_ID}&client_secret=${process.env.GRAVITY_SECRET}`;
+  console.log(`Connecting to ${endpoint}`);
+
   const {
     data: { xapp_token: token },
   } = await axios.get(endpoint);
@@ -19,10 +31,6 @@ const gravity = async () => {
     headers: { "x-xapp-token": token },
   });
 };
-
-const random = (max: number) => Math.floor(Math.random() * Math.floor(max));
-
-const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const validate = async ({
   name,
@@ -48,11 +56,11 @@ const validate = async ({
   });
 };
 
-const check = (client: AxiosInstance) => ({
+const check = () => ({
   artists: async () => {
     return await validate({
       name: "Artist",
-      request: client.get("artists", { params: { page: random(2000) } }),
+      request: STATE.client!.get("artists", { params: { page: random(2000) } }),
       runtype: Gravity.Artist,
     });
   },
@@ -60,24 +68,34 @@ const check = (client: AxiosInstance) => ({
   artworks: async () => {
     return await validate({
       name: "Artwork",
-      request: client.get("artworks", { params: { page: random(2000) } }),
+      request: STATE.client!.get("artworks", {
+        params: { page: random(2000) },
+      }),
       runtype: Gravity.Artwork,
+    });
+  },
+
+  artist: async (id: string) => {
+    return await validate({
+      name: "Artwork",
+      request: STATE.client!.get(`artist/${id}`),
+      runtype: Gravity.Artist,
     });
   },
 
   artwork: async (id: string) => {
     return await validate({
       name: "Artwork",
-      request: client.get(`artwork/${id}`),
+      request: STATE.client!.get(`artwork/${id}`),
       runtype: Gravity.Artwork,
     });
   },
 });
 
 const run = async () => {
-  const client = await gravity();
+  STATE.client = STATE.client ?? (await gravity());
 
-  const { artists, artworks } = check(client);
+  const { artists, artworks } = check();
 
   await artists();
   await sleep(500);

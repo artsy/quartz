@@ -12,6 +12,7 @@ import { EmbeddedArtist } from "./Artist";
 import { EditionSet } from "./EditionSet";
 import { Image } from "./Image";
 import { CulturalMaker } from "./CulturalMaker";
+import { Partner } from "./Partner";
 
 export const Artwork = Record({
   _id: String,
@@ -67,7 +68,7 @@ export const Artwork = Record({
   not_signed: Boolean.Or(Null),
   offer: Boolean,
   offerable: Boolean,
-  // partner: Null, TODO: Implement Partner runtype
+  partner: Partner,
   pickup_available: Boolean.Or(Null),
   price_cents: Array(Number.Or(Null)).Or(Null),
   price_currency: String,
