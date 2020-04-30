@@ -1,11 +1,11 @@
 import {
-  Dictionary,
   Record,
   String,
   Number,
   Null,
   Array,
   Boolean,
+  Undefined,
 } from "runtypes";
 
 export const Image = Record({
@@ -18,7 +18,17 @@ export const Image = Record({
   is_default: Boolean,
   image_url: String.Or(Null),
   image_versions: Array(String),
-  image_urls: Dictionary(String, "string"), // TODO: Flesh out expected keys
+  image_urls: Record({
+    square: String.Or(Undefined),
+    large_rectangle: String.Or(Undefined),
+    medium_rectangle: String.Or(Undefined),
+    small: String.Or(Undefined),
+    large: String.Or(Undefined),
+    tall: String.Or(Undefined),
+    larger: String.Or(Undefined),
+    medium: String.Or(Undefined),
+    normalized: String.Or(Undefined),
+  }),
   tile_size: Number.Or(Null),
   tile_overlap: Number.Or(Null),
   tile_format: String.Or(Null),
