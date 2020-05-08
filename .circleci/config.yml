@@ -1,0 +1,41 @@
+version: 2.1
+
+defaults: &defaults
+  docker:
+    - image: "circleci/node:latest"
+
+orbs:
+  auto: artsy/auto@1.2.0
+
+jobs:
+  build:
+    <<: *defaults
+    steps:
+      - checkout
+      - run:
+          name: install
+          command: yarn install
+      - run:
+          name: build
+          command: yarn build
+
+workflows:
+  build_and_verify:
+    jobs:
+      - build
+      - auto/publish-canary:
+          context: npm-deploy
+          filters:
+            branches:
+              ignore:
+                - master
+          requires:
+            - build
+      - auto/publish:
+          context: npm-deploy
+          filters:
+            branches:
+              only:
+                - master
+          requires:
+            - build
