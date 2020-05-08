@@ -8,18 +8,21 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "clean": "rm -rf dist",
     "build": "yarn clean && tsc -p .",
+    "clean": "rm -rf dist",
     "prepublishOnly": "yarn build",
-    "watch": "tsc -w -p .",
+    "release": "auto shipit",
+    "stress": "ts-node test/stress.ts",
     "test": "jest",
-    "stress": "ts-node test/stress.ts"
+    "watch": "tsc -w -p ."
   },
   "devDependencies": {
+    "@artsy/auto-config": "^1.0.2",
     "@types/axios": "^0.14.0",
     "@types/jest": "^25.2.1",
     "@types/lodash.get": "^4.4.6",
     "@types/node": "^13.13.2",
+    "auto": "^9.31.1",
     "axios": "^0.19.2",
     "chalk": "^4.0.0",
     "jest": "^25.4.0",
