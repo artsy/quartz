@@ -6,6 +6,7 @@ import {
   Array,
   Boolean,
   Undefined,
+  Static,
 } from "runtypes";
 
 export const Image = Record({
@@ -38,3 +39,5 @@ export const Image = Record({
   gemini_token: String,
   gemini_token_updated_at: String.Or(Null),
 });
+
+export type TImage = Static<typeof Image>;

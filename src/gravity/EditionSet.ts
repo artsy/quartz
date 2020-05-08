@@ -1,4 +1,4 @@
-import { Array, Record, Number, String, Boolean, Null } from "runtypes";
+import { Array, Record, Number, String, Boolean, Null, Static } from "runtypes";
 
 export const EditionSet = Record({
   id: String,
@@ -15,3 +15,5 @@ export const EditionSet = Record({
   availability: String,
   availability_hidden: Boolean,
 });
+
+export type EditionSet = Static<typeof EditionSet>;

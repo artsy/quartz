@@ -41,19 +41,23 @@ const validate = async ({
   request: Promise<AxiosResponse<any>>;
   runtype: Runtype;
 }) => {
-  const { data } = await request;
+  try {
+    const { data } = await request;
 
-  [].concat(...[data]).map((datum: any) => {
-    try {
-      runtype.check(datum);
-      console.log(chalk.white(`ok ${name}:${datum.id}`));
-    } catch ({ message, key }) {
-      console.error(
-        chalk.redBright(`error ${name}:${datum.id} <${key}>: ${message}`),
-        get(datum, key)
-      );
-    }
-  });
+    [].concat(...[data]).map((datum: any) => {
+      try {
+        runtype.check(datum);
+        console.log(chalk.white(`ok ${name}:${datum.id}`));
+      } catch ({ message, key }) {
+        console.error(
+          chalk.redBright(`error ${name}:${datum.id} <${key}>: ${message}`),
+          get(datum, key)
+        );
+      }
+    });
+  } catch (err) {
+    console.error(chalk.redBright(err));
+  }
 };
 
 const check = () => ({
@@ -75,6 +79,16 @@ const check = () => ({
     });
   },
 
+  features: async () => {
+    return await validate({
+      name: "Feature",
+      request: STATE.client!.get("features", {
+        params: { page: random(100) },
+      }),
+      runtype: Gravity.Feature,
+    });
+  },
+
   artist: async (id: string) => {
     return await validate({
       name: "Artwork",
@@ -90,19 +104,29 @@ const check = () => ({
       runtype: Gravity.Artwork,
     });
   },
+
+  feature: async (id: string) => {
+    return await validate({
+      name: "Feature",
+      request: STATE.client!.get(`feature/${id}`),
+      runtype: Gravity.Feature,
+    });
+  },
 });
 
 const run = async () => {
   STATE.client = STATE.client ?? (await gravity());
 
-  const { artists, artworks } = check();
+  const { artists, artworks, features } = check();
 
   await artists();
   await sleep(500);
   await artworks();
   await sleep(500);
+  await features();
+  await sleep(500);
 
-  run();
+  await run();
 };
 
 run();

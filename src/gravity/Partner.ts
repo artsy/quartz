@@ -1,4 +1,4 @@
-import { Array, Record, String, Boolean, Null } from "runtypes";
+import { Array, Record, String, Boolean, Null, Static } from "runtypes";
 import { PartnerCategory } from "./PartnerCategory";
 
 export const Partner = Record({
@@ -22,3 +22,5 @@ export const Partner = Record({
   profile_artists_layout: String.Or(Null),
   display_artists_section: Boolean,
 });
+
+export type Partner = Static<typeof Partner>;

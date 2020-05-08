@@ -1,4 +1,4 @@
-import { Record, String, Boolean } from "runtypes";
+import { Record, String, Boolean, Static } from "runtypes";
 
 export const PartnerCategory = Record({
   _id: String,
@@ -7,3 +7,5 @@ export const PartnerCategory = Record({
   name: String,
   internal: Boolean,
 });
+
+export type PartnerCategory = Static<typeof PartnerCategory>;

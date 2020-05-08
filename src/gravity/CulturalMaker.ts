@@ -1,4 +1,4 @@
-import { Record, String } from "runtypes";
+import { Record, String, Static } from "runtypes";
 
 export const CulturalMaker = Record({
   _id: String,
@@ -8,3 +8,5 @@ export const CulturalMaker = Record({
   created_at: String,
   updated_at: String,
 });
+
+export type CulturalMaker = Static<typeof CulturalMaker>;
