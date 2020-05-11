@@ -1,3 +1,15 @@
+# v0.0.3 (Mon May 11 2020)
+
+#### ⚠️  Pushed to `master`
+
+- Exposes OrderedItem type ([@dzucconi](https://github.com/dzucconi))
+
+#### Authors: 1
+
+- Damon ([@dzucconi](https://github.com/dzucconi))
+
+---
+
 # v0.0.2 (Fri May 08 2020)
 
 #### ⚠️  Pushed to `master`
