@@ -1,3 +1,15 @@
+# v0.1.0 (Fri Jun 05 2020)
+
+#### 🚀  Enhancement
+
+- Generates comprehensive Artwork type [#4](https://github.com/artsy/quartz/pull/4) ([@dzucconi](https://github.com/dzucconi))
+
+#### Authors: 1
+
+- Damon ([@dzucconi](https://github.com/dzucconi))
+
+---
+
 # v0.0.3 (Mon May 11 2020)
 
 #### ⚠️  Pushed to `master`
