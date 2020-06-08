@@ -2078,6 +2078,16 @@ gitlog@^4.0.0:
     debug "^4.1.1"
     tslib "^1.11.1"
 
+glass-cube@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/glass-cube/-/glass-cube-1.0.4.tgz#e5d3bf9ae5e53a2a42081e7a4a0d2cdc5be414bb"
+  integrity sha512-iClyPIkSoTY9v1Hb2ER+AncfV2V2XTTtrPws/M9kaXCCn6X1P8GsHCHtwKZ3nYAqMmQgX4FHDNJ4EmiZynzhaQ==
+  dependencies:
+    "@types/lodash" "^4.14.152"
+    lodash "^4.17.15"
+    prettier "^2.0.5"
+    runtypes "^4.2.0"
+
 glob-parent@^5.1.0:
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/glob-parent/-/glob-parent-5.1.1.tgz#b6c1ef417c4e5663ea498f1c45afac6916bbc229"
@@ -4564,16 +4574,6 @@ which@^2.0.1, which@^2.0.2:
   integrity sha512-BLI3Tl1TW3Pvl70l3yq3Y64i+awpwXqsGBYWkkqMtnbXgrMD+yj7rhW0kuEDxzJaYXGjEW5ogapKNMEKNMjibA==
   dependencies:
     isexe "^2.0.0"
-
-white-cube@1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/white-cube/-/white-cube-1.0.3.tgz#aac3e84d4332e9e0fb555d3b811c76260c30c22c"
-  integrity sha512-ba+Mfz10FComV6aLsP0zAt3ngunCQrcgqWYvb0zNvq1Jyu0Pf7BSbI6ncBapOLnUEJ6Q5bcY2UYps8C8ymRntg==
-  dependencies:
-    "@types/lodash" "^4.14.152"
-    lodash "^4.17.15"
-    prettier "^2.0.5"
-    runtypes "^4.2.0"
 
 windows-release@^3.1.0:
   version "3.3.0"

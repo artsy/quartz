@@ -1,6 +1,6 @@
 import chalk from "chalk";
 import { sleep, gravity } from "./lib";
-import { jsonToRuntype, writeRuntype, reduceRuntypes } from "white-cube";
+import { jsonToRuntype, writeRuntype, reduceRuntypes } from "glass-cube";
 
 const requireUncached = (module: string) => {
   delete require.cache[require.resolve(module)];
