@@ -107,7 +107,6 @@ export const Artwork = R.Record({
       editions: R.String,
       display_price_currency: R.String,
       availability: R.String,
-      availability_hidden: R.Boolean,
     })
   ),
   cultural_makers: R.Array(
@@ -163,7 +162,6 @@ export const Artwork = R.Record({
   price: R.String,
   series: R.Null.Or(R.String),
   availability: R.String,
-  availability_hidden: R.Boolean,
   ecommerce: R.Boolean,
   offer: R.Boolean,
   tags: R.Array(R.String),
