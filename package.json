@@ -1,6 +1,6 @@
 {
   "name": "@artsy/quartz",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Runtime types for Gravity",
   "main": "dist/index.js",
   "repository": "https://github.com/artsy/quartz",
