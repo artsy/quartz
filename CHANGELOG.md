@@ -1,3 +1,15 @@
+# v0.3.0 (Wed Nov 19 2025)
+
+#### 🚀  Enhancement
+
+- feat: add yarn check github action [#34](https://github.com/artsy/quartz/pull/34) ([@mc-jones](https://github.com/mc-jones))
+
+#### Authors: 1
+
+- Matt Jones ([@mc-jones](https://github.com/mc-jones))
+
+---
+
 # v0.2.0 (Mon Mar 06 2023)
 
 #### 🚀  Enhancement
