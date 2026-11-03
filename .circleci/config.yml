@@ -5,7 +5,7 @@ defaults: &defaults
     - image: "circleci/node:latest"
 
 orbs:
-  auto: artsy/auto@dev:2aef03cbfbbf0911d52c58abd31a4457
+  auto: artsy/auto@3.0.0
 
 jobs:
   build:
